@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bebas Neue", "Arial Black", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --color-nike-black: #111111;
+  --color-nike-white: #fafafa;
+  --color-nike-gray: #757575;
+  --color-nike-light: #f5f5f5;
+  --color-nike-volt: #ceff00;
+  --color-nike-orange: #fa5400;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-nike-white text-nike-black antialiased;
+    font-family: var(--font-body);
+  }
+
+  ::selection {
+    @apply bg-nike-volt text-nike-black;
+  }
+}
+
+@layer utilities {
+  .text-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.02em;
+  }
+
+  .nike-btn {
+    @apply inline-flex items-center justify-center px-8 py-3 text-sm font-semibold uppercase tracking-widest transition-all duration-200;
+  }
+
+  .nike-btn-primary {
+    @apply bg-nike-black text-white hover:bg-nike-orange;
+  }
+
+  .nike-btn-outline {
+    @apply border-2 border-nike-black bg-transparent text-nike-black hover:bg-nike-black hover:text-white;
+  }
+
+  .nike-input {
+    @apply w-full border-b-2 border-nike-black bg-transparent px-1 py-3 text-base outline-none transition-colors placeholder:text-nike-gray focus:border-nike-orange;
+  }
+
+  .nike-card {
+    @apply bg-white transition-transform duration-300 hover:-translate-y-1;
+  }
+
+  .hero-gradient {
+    background: linear-gradient(135deg, #111 0%, #2a2a2a 50%, #111 100%);
+  }
+
+  .swoosh-accent {
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out forwards;
+}
+
+.animate-fade-up-delay-1 {
+  animation: fade-up 0.6s ease-out 0.1s forwards;
+  opacity: 0;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fade-up 0.6s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+@keyframes pulse-volt {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(206, 255, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(206, 255, 0, 0);
+  }
+}
+
+.animate-pulse-volt {
+  animation: pulse-volt 2s infinite;
+}
